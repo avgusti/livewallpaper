@@ -8,7 +8,7 @@ import android.view.SurfaceView;
 
 public class Panel extends SurfaceView implements SurfaceHolder.Callback {
 
-	private CircularClockRenderer circularClockRenderer;
+	
 	private CirclesBackgroundRenderer backgroundRenderer = new CirclesBackgroundRenderer();
 
 	private ViewThread mThread;
@@ -17,13 +17,12 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback {
 		super(context);
 		getHolder().addCallback(this);
 		mThread = new ViewThread(this);
-		circularClockRenderer = new CircularClockRenderer(context);
+		
 	}
 
 	@Override
 	public void surfaceChanged(SurfaceHolder holder, int format, int width,
 			int height) {
-		circularClockRenderer.updateRect(width, height);
 		backgroundRenderer.updateRect(width, height);
 	}
 
@@ -45,7 +44,6 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback {
 
 	public void doDraw(long elapsed, Canvas canvas) {
 		backgroundRenderer.doDraw(canvas);
-		circularClockRenderer.doDraw(canvas);
 	}
 
 	@Override

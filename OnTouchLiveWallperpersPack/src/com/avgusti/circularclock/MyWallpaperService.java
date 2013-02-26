@@ -1,7 +1,9 @@
 package com.avgusti.circularclock;
 
 //import android.content.SharedPreferences;
+import android.app.WallpaperManager;
 import android.graphics.Canvas;
+import android.os.Bundle;
 import android.os.Handler;
 //import android.preference.PreferenceManager;
 import android.service.wallpaper.WallpaperService;
@@ -43,14 +45,14 @@ public class MyWallpaperService extends WallpaperService {
 		//private boolean touchEnabled=true;
 		//private int circlesPerTouch=5;
 		
-		CircularClockRenderer circularClockRenderer = new CircularClockRenderer(getBaseContext());
+		//CircularClockRenderer circularClockRenderer = new CircularClockRenderer(getBaseContext());
 		CirclesBackgroundRenderer backgroundRenderer = new CirclesBackgroundRenderer();
 		public MyWallpaperEngine() {
 //			SharedPreferences prefs = PreferenceManager
 //					.getDefaultSharedPreferences(MyWallpaperService.this);
 //			circlesPerTouch = prefs.getInt("circlesPerTouch", 5);
 //			touchEnabled = prefs.getBoolean("touch", false);
-
+			setTouchEventsEnabled(true);
 			handler.post(drawRunner);
 		}
 
@@ -74,7 +76,7 @@ public class MyWallpaperService extends WallpaperService {
 		@Override
 		public void onSurfaceChanged(SurfaceHolder holder, int format,
 				int width, int height) {
-			circularClockRenderer.updateRect(width, height);
+			//circularClockRenderer.updateRect(width, height);
 			backgroundRenderer.updateRect(width, height);
 			super.onSurfaceChanged(holder, format, width, height);
 		}
@@ -105,7 +107,13 @@ public class MyWallpaperService extends WallpaperService {
 //				super.onTouchEvent(event);
 //			}
 		}
-
+		@Override
+		public Bundle onCommand(String action, int x, int y, int z, Bundle extras, boolean resultRequested) {
+		    if (action.equals(WallpaperManager.COMMAND_TAP)) {
+		    	//backgroundRenderer.updateRect();
+		    }
+		    return null;
+		}
 		long mStartTime, mElapsed;
 
 		private void draw() {
@@ -116,7 +124,7 @@ public class MyWallpaperService extends WallpaperService {
 				canvas = holder.lockCanvas();
 				if (canvas != null) {
 					backgroundRenderer.doDraw(canvas);
-					circularClockRenderer.doDraw(canvas);
+					//circularClockRenderer.doDraw(canvas);
 				}
 			} finally {
 				if (canvas != null)
