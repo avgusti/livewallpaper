@@ -2,4 +2,6 @@
 <wallpaper 
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:thumbnail="@drawable/circles_icon"
-  android:description="@string/circles_wallpaper_description"/> 
+  android:description="@string/circles_wallpaper_description"
+  android:settingsActivity="com.avgusti.circularwallpaper.SettingsActivity"
+  android:author="@string/author"/> 

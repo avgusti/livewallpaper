@@ -1,4 +1,4 @@
-package com.avgusti.circularclock;
+package com.avgusti.circularwallpaper;
 
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;

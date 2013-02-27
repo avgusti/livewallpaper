@@ -1,6 +1,7 @@
 <resources>
 
     <string name="app_name">OnTouch Live Wallperpers Pack</string>
-    <string name="circles_wallpaper_description">Tought Circles</string>    
+    <string name="circles_wallpaper_description">Tought Circles</string>
+    <string name="author">Avgust Ishchenko</string>
 
 </resources>
